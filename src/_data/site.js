@@ -3,6 +3,8 @@
 export default {
   title: "Caleb's Crossword Archive",
   author: "Caleb Clayton",
+  // Short motto shown under the site title on every page.
+  tagline: "Handmade puzzles · solved in your browser",
   description:
     "An archive of crossword puzzles by Caleb Clayton — browse them, read about them, and solve them right in your browser.",
   email: "claytoncaleb0@gmail.com",

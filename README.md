@@ -16,6 +16,7 @@ Run these from this folder in a terminal:
 | `npm run dev` | Preview the site at <http://localhost:8080> (auto-reloads as you edit) |
 | `npm run new -- "Puzzle Title"` | Scaffold a new puzzle folder |
 | `npm run build` | Build the site into `_site/` (only needed for checking; deploys build themselves) |
+| `npm run art` | Regenerate the pixel art in `src/assets/img/` (only needed after editing `scripts/make-art.js`) |
 
 ## How to add a puzzle
 
@@ -55,6 +56,7 @@ src/
 ├── _includes/layouts/   ← page templates (base, page, puzzle)
 ├── assets/
 │   ├── css/style.css    ← all styling (colours defined at the top)
+│   ├── img/             ← pixel art (generated — edit scripts/make-art.js, then `npm run art`)
 │   └── vendor/exolve/   ← the crossword player (third-party, don't edit)
 ├── puzzles/
 │   └── <one-folder-per-puzzle>/

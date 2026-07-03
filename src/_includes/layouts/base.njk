@@ -3,38 +3,56 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#191f30">
   <title>{% if title %}{{ title }} · {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ description or teaser or site.description }}">
+  <link rel="icon" href="{{ '/assets/img/owl.png' | url }}" type="image/png">
+  {# Fraunces gives the headings their warm, hand-set feel; body text stays a fast system font. #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,400..700&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
 </head>
 <body>
-  <header class="site-header">
-    <a class="site-name" href="{{ '/' | url }}">{{ site.title }}</a>
-    <nav class="site-nav">
-      <a href="{{ '/puzzles/' | url }}">Puzzles</a>
-      <a href="{{ '/about/' | url }}">About</a>
-      <a href="{{ '/contact/' | url }}">Contact</a>
-    </nav>
-  </header>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <main>
-    {{ content | safe }}
-  </main>
+  {# Binder tabs, tucked behind the top edge of the paper. #}
+  <nav class="site-nav" aria-label="Main">
+    <a href="{{ '/puzzles/' | url }}" {% if page.url.startsWith('/puzzles') %}aria-current="page"{% endif %}>Puzzles</a>
+    <a href="{{ '/about/' | url }}" {% if page.url.startsWith('/about') %}aria-current="page"{% endif %}>About</a>
+    <a href="{{ '/contact/' | url }}" {% if page.url.startsWith('/contact') %}aria-current="page"{% endif %}>Contact</a>
+  </nav>
 
-  <aside class="promo">
-    <h2>More of my work</h2>
-    <ul>
-      {% for item in site.promo %}
-      <li>
-        <a href="{{ item.url }}">{{ item.label }}</a>
-        {% if item.blurb %}<span class="promo-blurb"> — {{ item.blurb }}</span>{% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-  </aside>
+  {# The whole site lives on one sheet of paper pinned to the corkboard. #}
+  <div class="journal">
+    <header class="masthead">
+      <a class="site-name" href="{{ '/' | url }}">
+        <img class="masthead-owl" src="{{ '/assets/img/owl.png' | url }}" alt="" width="21" height="24">
+        <span class="site-title">{{ site.title }}</span>
+      </a>
+      <p class="tagline">{{ site.tagline }}</p>
+    </header>
 
-  <footer class="site-footer">
-    <p>© {% year %} {{ site.author }} · Built with <a href="https://www.11ty.dev/">Eleventy</a>, puzzles played with <a href="https://github.com/viresh-ratnakar/exolve">Exolve</a>.</p>
-  </footer>
+    <main id="main">
+      {{ content | safe }}
+    </main>
+
+    <aside class="promo">
+      <h2>More of my work</h2>
+      <ul>
+        {% for item in site.promo %}
+        <li>
+          <a href="{{ item.url }}">{{ item.label }}</a>
+          {% if item.blurb %}<span class="promo-blurb"> — {{ item.blurb }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </aside>
+
+    <footer class="site-footer">
+      <img class="footer-cat" src="{{ '/assets/img/cat.png' | url }}" alt="" width="21" height="13">
+      <p>© {% year %} {{ site.author }} · Built with <a href="https://www.11ty.dev/">Eleventy</a>, puzzles played with <a href="https://github.com/viresh-ratnakar/exolve">Exolve</a>.</p>
+    </footer>
+  </div>
 </body>
 </html>

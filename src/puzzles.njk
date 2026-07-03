@@ -3,15 +3,17 @@ layout: layouts/base.njk
 title: Puzzle Archive
 permalink: /puzzles/index.html
 ---
-<h1>Puzzle Archive</h1>
-<p>{{ collections.puzzles.length }} puzzle{% if collections.puzzles.length != 1 %}s{% endif %}, newest first.</p>
+<h1>The Archive</h1>
+<p>{{ collections.puzzles.length }} puzzle{% if collections.puzzles.length != 1 %}s{% endif %}, newest first. Take one down off the shelf.</p>
 
+{% set total = collections.puzzles.length %}
 <ol class="puzzle-list">
   {% for p in collections.puzzles %}
   <li class="puzzle-card">
     {% if p.data.thumbnail %}
-    <a href="{{ p.url | url }}"><img class="puzzle-thumb" src="{{ (p.url + p.data.thumbnail) | url }}" alt="Preview of the grid for {{ p.data.title }}"></a>
+    <img class="puzzle-thumb" src="{{ (p.url + p.data.thumbnail) | url }}" alt="Preview of the grid for {{ p.data.title }}">
     {% endif %}
+    <span class="issue-no">Nº {{ total - loop.index0 }}</span>
     <h2><a href="{{ p.url | url }}">{{ p.data.title }}</a></h2>
     <p class="puzzle-meta">
       {{ p.date | readableDate }}

@@ -9,7 +9,8 @@
     "build": "eleventy",
     "new": "node scripts/new-puzzle.js",
     "add": "node scripts/add-puzzle.js",
-    "edit": "node scripts/edit-puzzle.js"
+    "edit": "node scripts/edit-puzzle.js",
+    "art": "node scripts/make-art.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6"
