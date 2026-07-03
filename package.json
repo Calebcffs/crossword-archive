@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "eleventy --serve",
     "build": "eleventy",
-    "new": "node scripts/new-puzzle.js"
+    "new": "node scripts/new-puzzle.js",
+    "add": "node scripts/add-puzzle.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6"
