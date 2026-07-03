@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+---
+<section class="hero">
+  <h1>{{ site.title }}</h1>
+  <p>{{ site.description }}</p>
+  <p><a class="button" href="{{ '/puzzles/' | url }}">Browse all puzzles</a></p>
+</section>
+
+<section class="latest">
+  <h2>Latest puzzles</h2>
+  <ol class="puzzle-list">
+    {% for p in collections.puzzles | limit(3) %}
+    <li class="puzzle-card">
+      <h3><a href="{{ p.url | url }}">{{ p.data.title }}</a></h3>
+      <p class="puzzle-meta">{{ p.date | readableDate }}{% if p.data.difficulty %} · {{ p.data.difficulty }}{% endif %}</p>
+      {% if p.data.teaser %}<p>{{ p.data.teaser }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</section>

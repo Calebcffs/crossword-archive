@@ -1,0 +1,9 @@
+# Installed packages — recreated any time with `npm install`
+node_modules/
+
+# Built site — recreated any time with `npm run build`
+_site/
+
+# OS noise
+.DS_Store
+Thumbs.db

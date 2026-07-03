@@ -1,0 +1,52 @@
+---
+layout: layouts/base.njk
+---
+<article class="puzzle">
+  <header class="puzzle-header">
+    <h1>{{ title }}</h1>
+    <p class="puzzle-meta">
+      <time datetime="{{ page.date.toISOString() }}">{{ page.date | readableDate }}</time>
+      {%- if difficulty %} · Difficulty: {{ difficulty }}{% endif %}
+      {%- set topics = tags | topicTags %}
+      {%- if topics.length %} · {% for t in topics %}<span class="tag">{{ t }}</span>{% if not loop.last %} {% endif %}{% endfor %}{% endif %}
+    </p>
+  </header>
+
+  {% if content | trim %}
+  <div class="puzzle-notes">
+    {{ content | safe }}
+  </div>
+  {% endif %}
+
+  <div id="crossword" class="crossword-holder">
+    <noscript><p>This puzzle needs JavaScript to play. You can enable JavaScript, or <a href="./puzzle.ipuz">download the .ipuz file</a> instead.</p></noscript>
+  </div>
+</article>
+
+<link rel="stylesheet" href="{{ '/assets/vendor/exolve/exolve-m.css' | url }}">
+<script src="{{ '/assets/vendor/exolve/exolve-m.js' | url }}"></script>
+<script src="{{ '/assets/vendor/exolve/exolve-from-ipuz.js' | url }}"></script>
+<script>
+  (async function () {
+    const holder = document.getElementById('crossword');
+    try {
+      const resp = await fetch('./{{ ipuzFile or "puzzle.ipuz" }}');
+      if (!resp.ok) throw new Error('could not fetch puzzle file (HTTP ' + resp.status + ')');
+      let text = (await resp.text()).trim();
+      // Some tools export .ipuz wrapped in an ipuz(...) callback; unwrap it.
+      if (text.startsWith('ipuz(')) {
+        text = text.slice(text.indexOf('(') + 1, text.lastIndexOf(')'));
+      }
+      const ipuz = JSON.parse(text);
+      // The page header already shows title and author.
+      delete ipuz.title;
+      delete ipuz.author;
+      const specs = exolveFromIpuz(ipuz, 'puzzle.ipuz');
+      if (!specs) throw new Error('this .ipuz file uses features the player does not support');
+      new Exolve(specs, 'crossword', null, /* provideStateUrl= */ false);
+    } catch (err) {
+      holder.innerHTML = '<p class="puzzle-error">Sorry, this puzzle could not be loaded: ' + err.message + '</p>';
+      console.error(err);
+    }
+  })();
+</script>

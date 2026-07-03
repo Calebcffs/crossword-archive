@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ description or teaser or site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="{{ '/' | url }}">{{ site.title }}</a>
+    <nav class="site-nav">
+      <a href="{{ '/puzzles/' | url }}">Puzzles</a>
+      <a href="{{ '/about/' | url }}">About</a>
+      <a href="{{ '/contact/' | url }}">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <aside class="promo">
+    <h2>More of my work</h2>
+    <ul>
+      {% for item in site.promo %}
+      <li>
+        <a href="{{ item.url }}">{{ item.label }}</a>
+        {% if item.blurb %}<span class="promo-blurb"> — {{ item.blurb }}</span>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </aside>
+
+  <footer class="site-footer">
+    <p>© {% year %} {{ site.author }} · Built with <a href="https://www.11ty.dev/">Eleventy</a>, puzzles played with <a href="https://github.com/viresh-ratnakar/exolve">Exolve</a>.</p>
+  </footer>
+</body>
+</html>

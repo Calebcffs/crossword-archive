@@ -1,0 +1,204 @@
+/* ---------------------------------------------------------------
+   Site styles. Colours and sizes are defined once as variables
+   here, so a re-theme is usually just an edit to this block.
+   --------------------------------------------------------------- */
+:root {
+  --ink: #1f2430;
+  --ink-soft: #5b6272;
+  --paper: #fdfcf9;
+  --card: #ffffff;
+  --accent: #2f6f4f;
+  --accent-dark: #24573e;
+  --rule: #e3e0d8;
+  --max-width: 46rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+main,
+.site-header,
+.promo,
+.site-footer {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-dark);
+}
+
+h1, h2, h3 {
+  line-height: 1.25;
+}
+
+/* Header ------------------------------------------------------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 2rem;
+}
+
+.site-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Homepage ------------------------------------------------------ */
+.hero h1 {
+  margin-bottom: 0.25rem;
+}
+
+.button {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.button:hover {
+  background: var(--accent-dark);
+  color: #fff;
+}
+
+/* Puzzle lists --------------------------------------------------- */
+.puzzle-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.puzzle-card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.puzzle-card h2,
+.puzzle-card h3 {
+  margin: 0 0 0.25rem;
+}
+
+.puzzle-card p {
+  margin: 0.25rem 0;
+}
+
+.puzzle-thumb {
+  max-width: 10rem;
+  height: auto;
+  float: right;
+  margin-left: 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+
+.puzzle-meta {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.tag {
+  display: inline-block;
+  background: #eef2ec;
+  border-radius: 4px;
+  padding: 0 0.4rem;
+  font-size: 0.85em;
+}
+
+/* Individual puzzle page ----------------------------------------- */
+.puzzle-header h1 {
+  margin-bottom: 0.25rem;
+}
+
+.puzzle-notes {
+  border-left: 3px solid var(--rule);
+  padding-left: 1rem;
+  color: var(--ink-soft);
+  margin: 1.5rem 0;
+}
+
+.crossword-holder {
+  margin: 2rem 0;
+}
+
+.puzzle-error {
+  background: #fbeaea;
+  border: 1px solid #e5b8b8;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+}
+
+/* Promo + footer -------------------------------------------------- */
+.promo {
+  margin-top: 3rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1rem;
+}
+
+.promo h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+}
+
+.promo ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.promo-blurb {
+  color: var(--ink-soft);
+}
+
+.site-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
