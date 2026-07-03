@@ -22,6 +22,11 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addShortcode("year", () => String(new Date().getFullYear()));
 
+  // A number that changes on every build. Appended to the stylesheet URL
+  // (style.css?v=...) so browsers never keep using an old cached copy
+  // after the site is redeployed.
+  eleventyConfig.addGlobalData("buildId", () => String(Date.now()));
+
   return {
     dir: {
       input: "src",
