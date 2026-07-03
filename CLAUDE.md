@@ -11,6 +11,10 @@ player for `.ipuz` puzzles. Deployed to GitHub Pages via Actions.
   puzzle folder, rebuilds, and optionally commits + pushes. This is the normal
   way to publish a puzzle. `npm run new -- "Title"` still scaffolds an empty
   puzzle folder by hand if ever needed.
+- `npm run edit` = guided editor (scripts/edit-puzzle.js): pick an existing
+  puzzle, change any field or swap the .ipuz, rebuild, optionally push. It
+  never renames a folder (the slug is the permanent URL), so it only changes
+  the displayed title, not the link.
 - One puzzle = one folder: `src/puzzles/<slug>/{index.md, puzzle.ipuz}`.
   The slug is the permanent URL — never rename published puzzle folders.
 - `src/assets/vendor/exolve/` is third-party code — update by re-downloading
