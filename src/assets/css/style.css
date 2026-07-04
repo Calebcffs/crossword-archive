@@ -616,6 +616,45 @@ main,
   .journal::after { right: 12px; }
 }
 
+/* The study radio — background-music toggle (assets/js/music.js) --- */
+/* A little paper chip pinned to the bottom corner of the screen. It is
+   rendered hidden and only revealed by the script, so it never appears
+   for visitors without JavaScript. */
+.music-toggle {
+  position: fixed;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  z-index: 40;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: var(--paper-deep);
+  padding: 0.35rem 0.8rem;
+  border: 2px solid var(--ink-border);
+  border-radius: 8px;
+  box-shadow: 2px 3px 0 var(--ink-border);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.music-toggle:hover,
+.music-toggle:focus-visible {
+  transform: translate(-1px, -2px);
+  box-shadow: 4px 5px 0 var(--ink-border);
+}
+
+.music-toggle:active {
+  transform: translate(1px, 2px);
+  box-shadow: 1px 1px 0 var(--ink-border);
+}
+
+/* When the radio is on, the chip turns the study's muted green. */
+.music-toggle[aria-pressed="true"] {
+  background: var(--green);
+  color: var(--paper);
+}
+
 /* Respect visitors who prefer less movement. */
 @media (prefers-reduced-motion: reduce) {
   * {

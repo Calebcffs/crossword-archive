@@ -13,7 +13,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,400..700&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}?v={{ buildId }}">
 </head>
-<body>
+{# Each page can pick a music mood in its front matter (musicMood: welcome /
+   browse / solve / seasonal-winter). Puzzle pages set "solve" via the puzzle
+   layout; everything else defaults to "browse". #}
+<body data-music-mood="{{ musicMood or 'browse' }}">
   <a class="skip-link" href="#main">Skip to content</a>
 
   {# Binder tabs, tucked behind the top edge of the paper. #}
@@ -54,5 +57,11 @@
       <p>© {% year %} {{ site.author }} · Built with <a href="https://www.11ty.dev/">Eleventy</a>, puzzles played with <a href="https://github.com/viresh-ratnakar/exolve">Exolve</a>.</p>
     </footer>
   </div>
+
+  {# The study radio: generative background music (assets/js/music.js).
+     Hidden until the script un-hides it, so it never shows without JS. #}
+  <button id="music-toggle" class="music-toggle" hidden
+          aria-pressed="false" title="Toggle background music">♪ music off</button>
+  <script src="{{ '/assets/js/music.js' | url }}?v={{ buildId }}" defer></script>
 </body>
 </html>

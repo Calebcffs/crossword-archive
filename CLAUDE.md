@@ -28,6 +28,14 @@ player for `.ipuz` puzzles. Deployed to GitHub Pages via Actions.
   never by editing vendor files.
 - Internal links in templates must use the `| url` filter (GitHub Pages
   serves the site under a path prefix set by the deploy workflow).
+- Background music is GENERATED live in the browser by
+  `src/assets/js/music.js` (Web Audio API) — no audio files exist. Moods
+  are picked per page via `musicMood` front matter (welcome / browse /
+  solve / seasonal-winter; default browse). Puzzle pages use "solve",
+  which picks a random "thinking track" variation each visit. Music is
+  off by default; the ♪ toggle (bottom-right, styled in style.css)
+  remembers the choice in localStorage. Puzzle completion plays a short
+  jingle via Exolve's bubbling `exolve` event.
 - Site-wide settings (title, author, promo links) live in `src/_data/site.js`.
 - Backend is intentionally absent. If ratings/play counts are ever added,
   use Firebase as a small progressive enhancement on puzzle pages only.
